@@ -81,9 +81,10 @@ public class NodeMultiple {
      * @param daughter
      */
     public void addDaughter(NodeMultiple daughter) {
-        for (NodeMultiple node : daughters) {
-            if (node == null) {
-                node = daughter;
+        int i= 0;
+        while (i < daughters.length){
+            if (daughters[i] == null) {
+                daughters[i] = daughter;
                 return;
             }
         }
