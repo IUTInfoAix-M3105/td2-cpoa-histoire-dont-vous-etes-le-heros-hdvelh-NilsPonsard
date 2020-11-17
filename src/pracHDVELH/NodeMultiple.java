@@ -34,7 +34,7 @@ public class NodeMultiple {
      * @return the {@code i}th daughter node, or {@code null} if it does not exist.
      */
     public NodeMultiple getDaughter(int i) {
-        /* TO BE COMPLETED */
+        return daughters[i];
     }
 
     /**
@@ -52,21 +52,24 @@ public class NodeMultiple {
      * @param i        the daughter node's index
      */
     public void setDaughter(NodeMultiple daughter, int i) {
-        /* TO BE COMPLETED */
+        if (i >= NODE_MAX_ARITY) {
+            return;// abort
+        }
+        daughters[i] = daughter;
     }
 
     /**
      * @return all the daughters
      */
     public NodeMultiple[] getDaughters() {
-        /* TO BE COMPLETED */
+        return daughters;
     }
 
     /**
      * @param daughters the daughters to set
      */
     public void setDaughters(NodeMultiple[] daughters) {
-        /* TO BE COMPLETED */
+        this.daughters = daughters;
     }
 
     /**
@@ -78,29 +81,39 @@ public class NodeMultiple {
      * @param daughter
      */
     public void addDaughter(NodeMultiple daughter) {
-        /* TO BE COMPLETED */
+        for (NodeMultiple node : daughters) {
+            if (node == null) {
+                node = daughter;
+                return;
+            }
+        }
     }
 
     /**
      * @return the content data
      */
     public Object getData() {
-        /* TO BE COMPLETED */
+        return data;
     }
 
     /**
      * @param data
      */
     public void setData(Object data) {
-        /* TO BE COMPLETED */
+        this.data = data;
     }
 
     /**
      * @return {@code true} if and only if this node has at least one non-null
-     * daughter node.
+     *         daughter node.
      */
     public boolean hasDaughters() {
-        /* TO BE COMPLETED */
+        for (NodeMultiple node : daughters) {
+            if (node != null) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /* Constructors */
@@ -120,8 +133,8 @@ public class NodeMultiple {
      * @param data
      */
     public NodeMultiple(Object data) {
+        this();
         this.data = data;
-        daughters = new NodeMultiple[NODE_MAX_ARITY];
     }
 }
 
