@@ -22,10 +22,21 @@ public class Event extends NodeMultiple {
 	private int chosenPath;
 	private GUIManager gui;
 	private Scanner reader;
-	public Event(){
+	private static int lastId = 0;
+
+	public Event() {
 
 	}
-	
+
+	public Event(GUIManager gui, String data) {
+		super(data);
+		this.gui = gui;
+		reader = gui.getInputReader();
+		id = ++lastId;
+		chosenPath = -1;
+
+	}
+
 	/**
 	 * @return the playerAnswer
 	 */
@@ -124,7 +135,7 @@ public class Event extends NodeMultiple {
 
 	/* Methods */
 	/* TO BE COMPLETED */
-	}
+
 }
 
 // eof
