@@ -5,6 +5,8 @@
  */
 package pracHDVELH;
 
+import javax.print.DocFlavor.STRING;
+
 /**
  * @author prost
  *
@@ -77,8 +79,16 @@ public class Scenario {
 		System.out.println(scenario.run());
 	}
 
-	public void run() {
-
+	public String run() {
+		Event nextStep;
+		if ((nextStep = getHead()) == null) {
+			return MSG_EMPTY_SCENARIO;
+		}
+		while (!nextStep.isFinal()) {
+			nextStep = nextStep.run();
+		}
+		gui.outputln(nextStep.getData());
+		return MSG_FINALE;
 	}
 }
 

@@ -145,6 +145,18 @@ public class Event extends NodeMultiple {
 		chosenPath = interpretAnswer();
 		return this.getDaughter(chosenPath);
 	}
+
+	private int interpretAnswer() {
+		int res;
+		try {
+
+			res = Integer.parseInt(playerAnswer);
+		} catch (NumberFormatException exception) {
+			res = -1;
+		}
+
+		return res;
+	}
 }
 
 // eof
