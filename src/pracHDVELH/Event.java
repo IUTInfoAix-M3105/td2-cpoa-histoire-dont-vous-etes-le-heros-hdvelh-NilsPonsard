@@ -8,6 +8,8 @@ package pracHDVELH;
 import java.text.ChoiceFormat;
 import java.util.Scanner;
 
+import javax.print.attribute.standard.RequestingUserName;
+
 import myUtils.ErrorNaiveHandler;
 
 /**
@@ -136,7 +138,13 @@ public class Event extends NodeMultiple {
 
 	/* Methods */
 	/* TO BE COMPLETED */
-
+	public Event run() {
+		gui.outputln(this.toString());
+		gui.output(PROMPT_ANSWER);
+		playerAnswer = reader.next();
+		chosenPath = interpretAnswer();
+		return this.getDaughter(chosenPath);
+	}
 }
 
 // eof

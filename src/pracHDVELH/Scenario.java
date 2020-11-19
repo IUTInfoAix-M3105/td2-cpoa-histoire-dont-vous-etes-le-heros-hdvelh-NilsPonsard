@@ -76,6 +76,10 @@ public class Scenario {
 
 		System.out.println(scenario.run());
 	}
+
+	public void run() {
+
+	}
 }
 
 // eof
