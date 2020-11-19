@@ -142,19 +142,23 @@ public class Event extends NodeMultiple {
 		gui.outputln(this.toString());
 		gui.output(PROMPT_ANSWER);
 		playerAnswer = reader.next();
-		chosenPath = interpretAnswer();
+		while (true) {
+			chosenPath = interpretAnswer();
+			if (chosenPath != -1 && this.hasDaughters() && this.getDaughter(chosenPath) != null)
+				break;
+			else
+				gui.outputln(WARNING_MSG_INTEGER_EXPECTED);
+		}
 		return this.getDaughter(chosenPath);
 	}
 
 	private int interpretAnswer() {
 		int res;
 		try {
-
 			res = Integer.parseInt(playerAnswer);
 		} catch (NumberFormatException exception) {
 			res = -1;
 		}
-
 		return res;
 	}
 }
