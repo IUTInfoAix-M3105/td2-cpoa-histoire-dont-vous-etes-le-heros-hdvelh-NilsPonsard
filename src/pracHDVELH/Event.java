@@ -22,7 +22,10 @@ public class Event extends NodeMultiple {
 	private int chosenPath;
 	private GUIManager gui;
 	private Scanner reader;
+	public Event(){
 
+	}
+	
 	/**
 	 * @return the playerAnswer
 	 */
